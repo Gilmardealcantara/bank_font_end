@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
-import { Button } from 'reactstrap';
+import { Button, ButtonGroup} from 'reactstrap';
 
 class ClientTable extends Component {
 	
@@ -9,7 +9,11 @@ class ClientTable extends Component {
 		for(var i = val.length; i < 10; i++) val = '0' + val;
 		return (
       <div>
-      {val} <Button outline size="sm" color="primary">Extrato</Button>
+			<ButtonGroup>
+      	<Button outline size="sm" color="primary" disabled>{val}</Button>
+      	<Button outline size="sm" color="primary">Extrato</Button>
+      	<Button outline size="sm" color="success">Nova Transação</Button>
+			</ButtonGroup>
       </div>
     );
 	}
@@ -33,7 +37,7 @@ class ClientTable extends Component {
 			<div>
 				<h4 style={{"textAlign": "center"}}>Lista de Clientes</h4>
 				<BootstrapTable data={ this.props.clients }>
-					<TableHeaderColumn dataField='account' dataFormat={this.accountFormat} isKey>Número da Conta</TableHeaderColumn>
+					<TableHeaderColumn dataField='account' dataFormat={this.accountFormat} isKey>Conta</TableHeaderColumn>
 					<TableHeaderColumn dataField='name'>Nome do Cliente</TableHeaderColumn>
 					<TableHeaderColumn dataField='age'>Idade</TableHeaderColumn>
 					<TableHeaderColumn dataField='addr' dataFormat={this.addrFormat}>Endereço</TableHeaderColumn>
