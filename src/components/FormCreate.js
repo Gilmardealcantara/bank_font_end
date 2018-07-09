@@ -1,5 +1,8 @@
 import React from 'react';
 import { Row, Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Link } from "react-router-dom";
+
+import swal from 'sweetalert';
 
 export default class FormCreate extends React.Component {
   constructor(props){
@@ -23,11 +26,29 @@ export default class FormCreate extends React.Component {
 	}
 
 	sendData(){
-		console.log(this.state);
+		if(this.state.name === "" || this.state.age === 0){
+  		swal("Dados Obrigatórios!", "Nome e Idade!", "warning");
+			return;
+		}
+	
+		fetch(this.props.API + 'clients',
+			{
+				method: 'post',
+				headers: {'Content-Type': 'application/json'},
+				body: JSON.stringify(this.state)
+			})
+    		.then((response) => response.json())
+    		.then((responseJson) => {
+  				swal("Sucesso", "Novo cliente e conta adicionados!", "success");
+					console.log(responseJson)
+				})
+      	.catch((error) =>{
+  				swal("Falha!", error, "error");
+   	});
 	}
 
 	render() {
-    return (
+   	return (
 			<div>
 				<Form>
 					<h6 style={{"textAlign": "center"}}>Dados Do Cliente</h6>
@@ -142,12 +163,19 @@ export default class FormCreate extends React.Component {
 						</Col>
 					</FormGroup>
 				</Form>
-				<Row><Col sm={{ size: 4, order: 2, offset: 10 }}>
-					<Button 
-						color="success"
-						onClick={this.sendData.bind(this)}
-					>Adicionar Cliente</Button>
-				</Col></Row>
+				<Row>
+					<Col sm={{ size: 8, offset: 2}}>
+						<Link to="/">
+							<Button color="secondary">Voltar</Button>
+						</Link>	
+				 	</Col>
+					<Col sm={{ size: 2}}>
+						<Button 
+							color="success"
+							onClick={this.sendData.bind(this)}
+						>Adicionar Cliente</Button>
+				 	</Col>
+				</Row>
 
 			</div>
     );
