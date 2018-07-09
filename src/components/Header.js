@@ -52,7 +52,7 @@ export default class Header extends Component {
                     <NavLink href="/">Listar Clientes</NavLink>
                   </DropdownItem>
                   <DropdownItem>
-                    <NavLink href="/">Listar Transaçõe</NavLink>
+                    <NavLink href="/transactionslist">Listar Transaçõe</NavLink>
                   </DropdownItem>
                   <DropdownItem divider />
                   <DropdownItem>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Row, Col, Button, Form, FormGroup, Label, Input} from 'reactstrap';
 import { Link } from "react-router-dom";
 
 import swal from 'sweetalert';
@@ -73,6 +73,7 @@ export default class FormCreate extends React.Component {
 						</Col>
 					</FormGroup>
 				</Form>
+				<hr />
 				<Form>
 					<h6 style={{"textAlign": "center"}}>Endereço</h6>
 					<FormGroup row>
@@ -145,6 +146,7 @@ export default class FormCreate extends React.Component {
 						</Col> 
 					</FormGroup>
 				</Form>
+				<hr />
 				<Form>
 					<h6 style={{"textAlign": "center"}}>Dados Da conta</h6>
 					<FormGroup row>
@@ -163,6 +165,7 @@ export default class FormCreate extends React.Component {
 						</Col>
 					</FormGroup>
 				</Form>
+				<hr />
 				<Row>
 					<Col sm={{ size: 8, offset: 2}}>
 						<Link to="/">
@@ -176,7 +179,6 @@ export default class FormCreate extends React.Component {
 						>Adicionar Cliente</Button>
 				 	</Col>
 				</Row>
-
 			</div>
     );
   }
