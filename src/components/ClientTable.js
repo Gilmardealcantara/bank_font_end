@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
+import { Button } from 'reactstrap';
 
 class ClientTable extends Component {
 	
 	accountFormat(cell, row){
-		return(
-			<div>
-				<div> {cell.id }</div>
-			</div>
-		)
+		let val = cell.id.toString();
+		for(var i = val.length; i < 10; i++) val = '0' + val;
+		return (
+      <div>
+      {val} <Button outline size="sm" color="primary">Extrato</Button>
+      </div>
+    );
 	}
+
 	addrFormat(cell, row){
 		return(
 			<div>

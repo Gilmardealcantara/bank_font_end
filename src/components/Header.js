@@ -49,14 +49,14 @@ export default class Header extends Component {
                 </DropdownToggle>
                 <DropdownMenu right>
                   <DropdownItem>
-                    Listar Clientes
+                    <NavLink href="/">Listar Clientes</NavLink>
                   </DropdownItem>
                   <DropdownItem>
-                    Transações Hoje
+                    <NavLink href="/">Listar Transaçõe</NavLink>
                   </DropdownItem>
                   <DropdownItem divider />
                   <DropdownItem>
-                    Listar Contas
+                    <NavLink href="/accountslist">Listar contar</NavLink>
                   </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>

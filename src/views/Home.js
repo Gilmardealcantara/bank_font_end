@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 import Header from '../components/Header' 
 import ClientTable from '../components/ClientTable' 
+import AccountTable from '../components/AccountTable' 
 import FormCreate from '../components/FormCreate' 
 
 const API = 'http://localhost:8080/api/'
@@ -12,9 +13,7 @@ class Home extends Component {
  	constructor(props){
     super(props);
 		this.fetchClients = this.fetchClients.bind(this);
-		this.setOperation = this.setOperation.bind(this);
     this.state = { 
-			op: 1, // 0 criar cliente, 1 listar cliente, 2 listar contas, 3 listar transações
 			isLoading: true,
 			clients: [],
 			accounts: [],
@@ -34,10 +33,6 @@ class Home extends Component {
    	});
 	}
 
-	setOperation(op){
-		console.log(op);
-	}	
-
 	componentDidMount(){
   	this.fetchClients();
 	}
@@ -49,6 +44,7 @@ class Home extends Component {
 					<Header/>
 					<hr />
 					<Route exact path="/" render={()=><ClientTable clients={this.state.clients}/>} />
+					<Route exact path="/accountslist" render={()=><AccountTable clients={this.state.clients}/>} />
 					<Route exact path="/create" render={()=><FormCreate API={API} setOp={this.setOperation}/>} />
 				</div>
 			</Router>
