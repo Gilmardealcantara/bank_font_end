@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route} from 'react-router-dom';
 
 import Header from '../components/Header' 
 import ClientTable from '../components/ClientTable' 
 import AccountTable from '../components/AccountTable' 
+import TransactionsTable from '../components/TransactionsTable' 
 import FormCreate from '../components/FormCreate' 
 
 const API = 'http://localhost:8080/api/'
@@ -16,7 +17,6 @@ class Home extends Component {
     this.state = { 
 			isLoading: true,
 			clients: [],
-			accounts: [],
 			transactions: []
 		}
   }
@@ -33,21 +33,42 @@ class Home extends Component {
    	});
 	}
 
+
+	fetchTransactions(){
+  	fetch(API + 'transactions')
+    	.then((response) => response.json())
+    	.then((responseJson) => {
+				console.log(responseJson)
+				this.setState({isLoading: false, transactions: responseJson});	
+			})
+      .catch((error) =>{
+        console.error(error);
+   	});
+	}
+
 	componentDidMount(){
   	this.fetchClients();
+  	this.fetchTransactions();
 	}
   
 	render() {
 		return (
-			<Router>
-				<div>
-					<Header/>
-					<hr />
-					<Route exact path="/" render={()=><ClientTable clients={this.state.clients}/>} />
-					<Route exact path="/accountslist" render={()=><AccountTable clients={this.state.clients}/>} />
-					<Route exact path="/create" render={()=><FormCreate API={API} setOp={this.setOperation}/>} />
-				</div>
-			</Router>
+      <Container>
+        <Row>
+          <Col>
+						<Router>
+							<div>
+								<Header/>
+								<hr />
+								<Route exact path="/" render={()=><ClientTable clients={this.state.clients}/>} />
+								<Route exact path="/accountslist" render={()=><AccountTable clients={this.state.clients}/>} />
+								<Route exact path="/transactionslist" render={()=><TransactionsTable transactions={this.state.transactions}/>} />
+								<Route exact path="/create" render={()=><FormCreate API={API} setOp={this.setOperation}/>} />
+							</div>
+						</Router>
+          </Col>
+        </Row>
+      </Container>
 		);
   }
 }
