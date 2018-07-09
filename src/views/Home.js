@@ -7,6 +7,7 @@ import ClientTable from '../components/ClientTable'
 import AccountTable from '../components/AccountTable' 
 import TransactionsTable from '../components/TransactionsTable' 
 import FormCreate from '../components/FormCreate' 
+import BankStatement from '../components/BankStatement' 
 
 const API = 'http://localhost:8080/api/'
 
@@ -25,7 +26,6 @@ class Home extends Component {
   	fetch(API + 'clients')
     	.then((response) => response.json())
     	.then((responseJson) => {
-				console.log(responseJson)
 				this.setState({isLoading: false, clients: responseJson});	
 			})
       .catch((error) =>{
@@ -64,6 +64,8 @@ class Home extends Component {
 								<Route exact path="/accountslist" render={()=><AccountTable clients={this.state.clients}/>} />
 								<Route exact path="/transactionslist" render={()=><TransactionsTable transactions={this.state.transactions}/>} />
 								<Route exact path="/create" render={()=><FormCreate API={API} setOp={this.setOperation}/>} />
+								<Route exact path="/statement" render={()=>
+									<BankStatement API={API} clients={this.state.clients} transactions={this.state.transactions} />} />
 							</div>
 						</Router>
           </Col>

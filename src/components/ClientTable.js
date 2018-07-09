@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
 import { Button, ButtonGroup} from 'reactstrap';
+import { Link } from "react-router-dom";
 
 class ClientTable extends Component {
 	
@@ -11,7 +12,9 @@ class ClientTable extends Component {
       <div>
 			<ButtonGroup>
       	<Button outline size="sm" color="primary" disabled>{val}</Button>
-      	<Button outline size="sm" color="primary">Extrato</Button>
+				<Link to={"/statement?client_id=" + row.id}>
+      	  <Button outline size="sm" color="primary">Extrato</Button>
+				</Link>	
       	<Button outline size="sm" color="success">Nova Transação</Button>
 			</ButtonGroup>
       </div>
