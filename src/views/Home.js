@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 import Header from '../components/Header' 
 import ClientTable from '../components/ClientTable' 
@@ -7,12 +8,13 @@ import FormCreate from '../components/FormCreate'
 
 const API = 'http://localhost:8080/api/'
 
-//<ClientTable clients={this.state.clients}/>
 class Home extends Component {
  	constructor(props){
     super(props);
 		this.fetchClients = this.fetchClients.bind(this);
+		this.setOperation = this.setOperation.bind(this);
     this.state = { 
+			op: 1, // 0 criar cliente, 1 listar cliente, 2 listar contas, 3 listar transações
 			isLoading: true,
 			clients: [],
 			accounts: [],
@@ -32,24 +34,24 @@ class Home extends Component {
    	});
 	}
 
+	setOperation(op){
+		console.log(op);
+	}	
+
 	componentDidMount(){
   	this.fetchClients();
 	}
   
 	render() {
-    return (
-      <Container>
-        <Row>
-          <Col>
-						<Header/>
-          </Col>
-        </Row>
-        <Row style={{padding: 10}}>
-          <Col>
-            <FormCreate/>
-          </Col>
-        </Row>
-      </Container>
+		return (
+			<Router>
+				<div>
+					<Header/>
+					<hr />
+					<Route exact path="/" render={()=><ClientTable clients={this.state.clients}/>} />
+					<Route exact path="/create" render={()=><FormCreate API={API} setOp={this.setOperation}/>} />
+				</div>
+			</Router>
 		);
   }
 }

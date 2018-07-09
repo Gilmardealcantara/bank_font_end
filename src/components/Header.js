@@ -41,7 +41,7 @@ export default class Header extends Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/components/">Cadastrar Conta/Cliente</NavLink>
+                <NavLink href="/create">Cadastrar Conta/Cliente</NavLink>
               </NavItem>
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
