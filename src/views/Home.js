@@ -3,9 +3,11 @@ import { Container, Row, Col } from 'reactstrap';
 
 import Header from '../components/Header' 
 import ClientTable from '../components/ClientTable' 
+import FormCreate from '../components/FormCreate' 
 
 const API = 'http://localhost:8080/api/'
 
+//<ClientTable clients={this.state.clients}/>
 class Home extends Component {
  	constructor(props){
     super(props);
@@ -44,7 +46,7 @@ class Home extends Component {
         </Row>
         <Row style={{padding: 10}}>
           <Col>
-						<ClientTable clients={this.state.clients}/>
+            <FormCreate/>
           </Col>
         </Row>
       </Container>
