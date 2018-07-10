@@ -30,7 +30,6 @@ export default class FormCreate extends React.Component {
   		swal("Dados Obrigatórios!", "Nome e Idade!", "warning");
 			return;
 		}
-	
 		fetch(this.props.API + 'clients',
 			{
 				method: 'post',

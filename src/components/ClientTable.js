@@ -15,7 +15,9 @@ class ClientTable extends Component {
 				<Link to={"/statement?client_id=" + row.id}>
       	  <Button outline size="sm" color="primary">Extrato</Button>
 				</Link>	
-      	<Button outline size="sm" color="success">Nova Transação</Button>
+				<Link to={"/newtrans?client_id=" + row.id}>
+      	  <Button outline size="sm" color="success">Nova Transação</Button>
+				</Link>	
 			</ButtonGroup>
       </div>
     );
