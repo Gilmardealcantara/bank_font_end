@@ -32,7 +32,7 @@ class TransactionsTable extends Component {
     return (
 			<div>
 				<h4 style={{"textAlign": "center"}}>Log Diário de Transações</h4>
-				<BootstrapTable data={ this.props.transactions }>
+				<BootstrapTable data={ this.props.transactions } pagination>
 					<TableHeaderColumn dataField='id' isKey>ID</TableHeaderColumn>
 					<TableHeaderColumn dataField='createdAt' dataFormat={this.dateFormat} >Data</TableHeaderColumn>
 					<TableHeaderColumn dataField='send' dataFormat={this.accFormat}>Conta Depositante</TableHeaderColumn>

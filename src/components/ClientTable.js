@@ -37,7 +37,7 @@ class ClientTable extends Component {
     return (
 			<div>
 				<h4 style={{"textAlign": "center"}}>Lista de Clientes</h4>
-				<BootstrapTable data={ this.props.clients }>
+				<BootstrapTable data={ this.props.clients } pagination>
 					<TableHeaderColumn dataField='account' dataFormat={this.accountFormat} width='30%' isKey>Conta</TableHeaderColumn>
 					<TableHeaderColumn dataField='name' width='30%'>Nome do Cliente</TableHeaderColumn>
 					<TableHeaderColumn dataField='age'  width='10%'>Idade</TableHeaderColumn>

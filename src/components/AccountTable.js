@@ -25,7 +25,7 @@ class AccountTable extends Component {
     return (
 			<div>
 				<h4 style={{"textAlign": "center"}}>Saldo da Conta de Todos os Clientes</h4>
-				<BootstrapTable data={ this.props.clients }>
+				<BootstrapTable data={ this.props.clients } pagination>
 					<TableHeaderColumn dataField='name'>Nome do Cliente</TableHeaderColumn>
 					<TableHeaderColumn dataField='account' dataFormat={this.numberFormat} isKey>Número da Conta</TableHeaderColumn>
 					<TableHeaderColumn dataField='account' dataFormat={this.balanceFormat} >Saldo</TableHeaderColumn>

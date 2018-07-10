@@ -10,8 +10,8 @@ class NewTransaction extends Component {
  	constructor(props){
 		super(props);
 		this.state = {
-			value: 10,
-      dest_acc: "0000000002"
+			value: 0,
+      dest_acc: "0000000000"
 		}
 	} 
 	
@@ -116,6 +116,11 @@ class NewTransaction extends Component {
           </Col> 
           <Col sm={4}> 
             <h5><Badge color="success">Horário: </Badge>{ " " + now.toLocaleTimeString() }</h5>
+          </Col> 
+        </Row>
+        <Row>
+          <Col sm={4}> 
+            <h5><Badge color="primary">Saldo Atual: </Badge>{ " R$ " + client.account.balance.toFixed(2) }</h5>
           </Col> 
         </Row>
         <Row>
