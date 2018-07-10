@@ -53,8 +53,8 @@ export default class FormCreate extends React.Component {
 				<Form>
 					<h6 style={{"textAlign": "center"}}>Dados Do Cliente</h6>
 					<FormGroup row>
-						<Label for="clientName" sm={2}>Nome</Label>
-						<Col sm={7}>
+						<Label for="clientName" sm={1}>Nome</Label>
+						<Col sm={9}>
 							<Input 
 								type="text" 
 								id="clientName" 
@@ -63,7 +63,7 @@ export default class FormCreate extends React.Component {
 							/>
 						</Col>
 						<Label for="clientAge" sm={1}>Idade</Label>
-						<Col sm={2}>
+						<Col sm={1}>
 							<Input 
 								type="number" 
 								id="clientAge" 
@@ -77,8 +77,8 @@ export default class FormCreate extends React.Component {
 				<Form>
 					<h6 style={{"textAlign": "center"}}>Endereço</h6>
 					<FormGroup row>
-						<Label for="clientStreet" sm={2}>Rua/Avenida</Label>
-						<Col sm={7}>
+						<Label for="clientStreet" sm={1}>Rua/Av</Label>
+						<Col sm={9}>
 							<Input 
 								type="text" 
 								id="clientStreet" 
@@ -91,7 +91,7 @@ export default class FormCreate extends React.Component {
 							/>
 						</Col>
 						<Label for="clientNum" sm={1}>Número</Label>
-						<Col sm={2}>
+						<Col sm={1}>
 							<Input 
 								type="number" 
 								id="clientNum" 
@@ -105,7 +105,7 @@ export default class FormCreate extends React.Component {
 						</Col> 
 					</FormGroup>
 					<FormGroup row>
-						<Label for="clientCity" sm={2}>Cidade</Label>
+						<Label for="clientCity" sm={1}>Cidade</Label>
 						<Col sm={3}>
 							<Input  
 								type="text" 
@@ -119,7 +119,7 @@ export default class FormCreate extends React.Component {
 							/>
 						</Col>
 						<Label for="clientState" sm={1}>Estado</Label>
-						<Col sm={2}>
+						<Col sm={1}>
 							<Input  
 								type="text" 
 								id="clientState" 
@@ -132,7 +132,7 @@ export default class FormCreate extends React.Component {
 							/>
 						</Col>
 						<Label for="clientCountry" sm={1}>País</Label>
-						<Col sm={3}>
+						<Col sm={2}>
 							<Input  
 								type="text" 
 								id="clientCountry" 
@@ -144,6 +144,19 @@ export default class FormCreate extends React.Component {
 								}}
 							/>
 						</Col> 
+						<Label for="clientZipCode" sm={1}>CEP</Label>
+						<Col sm={2}>
+							<Input  
+								type="text" 
+								id="clientZipCode" 
+								value={this.state.addr.zipcode}
+								onChange={(e) => {
+									let new_addr = this.state.addr;
+									new_addr.zipcode = e.target.value;	
+									this.setState({addr: new_addr})
+								}}
+							/>
+						</Col>
 					</FormGroup>
 				</Form>
 				<hr />
@@ -151,7 +164,7 @@ export default class FormCreate extends React.Component {
 					<h6 style={{"textAlign": "center"}}>Dados Da conta</h6>
 					<FormGroup row>
 						<Label for="clientBalance" sm={2}>Saldo Inicial</Label>
-						<Col sm={4}>
+						<Col sm={{ size: 2, order: 2, offset: 3 }}>
 							<Input 
 								type="number" 
 								id="clientBalance" 
