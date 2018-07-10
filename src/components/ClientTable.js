@@ -24,12 +24,8 @@ class ClientTable extends Component {
 	addrFormat(cell, row){
 		return(
 			<div>
-				<div> {cell.street + ", " + 
-					cell.number + ", " + 
-					cell.city 	 + ", " + 
-					cell.state + ", " + 
-					cell.country + ", " + 
-					cell.zipcode} 
+				<div> {cell.street + ", " + cell.number + ", " + cell.city} </div> 
+				<div> { cell.state + ", " +  cell.country + ", " + cell.zipcode} 
 				</div>
 			</div>
 		)
@@ -40,10 +36,10 @@ class ClientTable extends Component {
 			<div>
 				<h4 style={{"textAlign": "center"}}>Lista de Clientes</h4>
 				<BootstrapTable data={ this.props.clients }>
-					<TableHeaderColumn dataField='account' dataFormat={this.accountFormat} width='400' isKey>Conta</TableHeaderColumn>
-					<TableHeaderColumn dataField='name'>Nome do Cliente</TableHeaderColumn>
-					<TableHeaderColumn dataField='age'>Idade</TableHeaderColumn>
-					<TableHeaderColumn dataField='addr' dataFormat={this.addrFormat}>Endereço</TableHeaderColumn>
+					<TableHeaderColumn dataField='account' dataFormat={this.accountFormat} width='30%' isKey>Conta</TableHeaderColumn>
+					<TableHeaderColumn dataField='name' width='30%'>Nome do Cliente</TableHeaderColumn>
+					<TableHeaderColumn dataField='age'  width='10%'>Idade</TableHeaderColumn>
+					<TableHeaderColumn dataField='addr' dataFormat={this.addrFormat} width='30%'>Endereço</TableHeaderColumn>
 				</BootstrapTable>
 			</div>
     );
