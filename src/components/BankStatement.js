@@ -20,14 +20,16 @@ class BankStatement extends Component {
 
 	calcStatements(cli, trans){
 		let data = [];
-		trans.forEach((t) => {
+    let current_balance = cli.account.balance;
+		trans.reverse().forEach((t) => {
 			if(cli.account.id === t.send.id){
-				let row = {}
+        let row = {}
 				row['date'] = new Date(t.createdAt).toLocaleString();
 				row['event'] = 'Envio de dinheiro para ' + this.numberFormat(t.rcv, t)
 				row['value'] = 'R$ -' + t.value.toFixed(2);
 				row['real_value'] = - t.value;
-				row['balance'] = 'R$ ' + t.send.balance.toFixed(2);
+        current_balance -= t.value;
+				row['balance'] = 'R$ ' + current_balance.toFixed(2);
 				data.push(row) 
 			}else if(cli.account.id === t.rcv.id){
 				let row = {}
@@ -35,7 +37,8 @@ class BankStatement extends Component {
 				row['event'] = 'Recebimento de dinheiro de ' + this.numberFormat(t.send, t)
 				row['value'] = 'R$ ' + t.value.toFixed(2);
 				row['real_value'] = t.value;
-				row['balance'] = 'R$ ' + t.rcv.balance.toFixed(2);
+        current_balance += t.value;
+				row['balance'] = 'R$ ' + current_balance.toFixed(2);
 				data.push(row)
 			}
 		});
@@ -93,10 +96,15 @@ class BankStatement extends Component {
             <h5><Badge color="success">Horário: </Badge>{ " " + now.toLocaleTimeString() }</h5>
           </Col> 
         </Row>
+        <Row>
+          <Col sm={4}> 
+            <h5><Badge color="primary">Saldo Atual: </Badge>{ " R$ " + client.account.balance.toFixed(2) }</h5>
+          </Col> 
+        </Row>
 				</div>
         <hr/>
 				<h4 style={{"textAlign": "center"}}>Movimentações</h4>
-        <BootstrapTable data={ data } trStyle={ this.trStyle }>
+        <BootstrapTable data={ data } trStyle={ this.trStyle } pagination>
 					<TableHeaderColumn dataField='date' isKey width='200'>Data</TableHeaderColumn>
 					<TableHeaderColumn dataField='event' > Lançamento</TableHeaderColumn>
 					<TableHeaderColumn dataField='value' width='200'>Valor</TableHeaderColumn>
