@@ -61,7 +61,7 @@ export default class Header extends Component {
                 </DropdownMenu>
               </UncontrolledDropdown>
               <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
+                <NavLink href="https://github.com/Gilmardealcantara">GitHub</NavLink>
               </NavItem>
             </Nav>
           </Collapse>

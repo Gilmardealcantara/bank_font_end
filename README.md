@@ -5,7 +5,7 @@
 
 * Listar Clientes
     * Tirar extrato
-    * Realizar Transações simples (transaferência bacárias)
+    * Realizar Transações simples (tansferência bancárias)
 * Cadastrar clientes
 * Listar Transações
 * Lista Contas e seus respectivos saldos
